@@ -1,8 +1,8 @@
 (function () {
-  var els = document.querySelectorAll(".rv-in");
+  var els = document.querySelectorAll(".animar-entrada");
   if (!("IntersectionObserver" in window)) {
     els.forEach(function (e) {
-      e.classList.add("on");
+      e.classList.add("visivel");
     });
     return;
   }
@@ -10,7 +10,7 @@
     function (es) {
       es.forEach(function (x) {
         if (x.isIntersecting) {
-          x.target.classList.add("on");
+          x.target.classList.add("visivel");
           io.unobserve(x.target);
         }
       });
@@ -27,13 +27,13 @@
   var $ = function (id) {
     return document.getElementById(id);
   };
-  var track = $("track");
+  var track = $("trilho");
   if (!track) return;
-  var slides = [].slice.call(track.querySelectorAll(".slide"));
-  var dotsBox = $("dots"),
-    lb = $("lb"),
-    lbimg = $("lbimg"),
-    lbcap = $("lbcap");
+  var slides = [].slice.call(track.querySelectorAll(".foto-slide"));
+  var dotsBox = $("pontos"),
+    lb = $("foto-ampliada"),
+    lbimg = $("ampliada-imagem"),
+    lbcap = $("ampliada-legenda");
   var cur = 0,
     dots = [],
     opener = null,
@@ -61,7 +61,7 @@
   function mark(i) {
     cur = i;
     dots.forEach(function (d, k) {
-      d.classList.toggle("on", k === i);
+      d.classList.toggle("ativo", k === i);
     });
   }
   function go(i) {
@@ -152,7 +152,7 @@
     dxm = e.clientX - sx;
     if (Math.abs(dxm) > 5) {
       moved = true;
-      track.classList.add("drag");
+      track.classList.add("arrastando");
     }
     if (moved) track.scrollLeft = slides[startIdx].offsetLeft - dxm;
   });
@@ -160,7 +160,7 @@
     if (!down) return;
     down = false;
     if (!moved) return;
-    track.classList.remove("drag");
+    track.classList.remove("arrastando");
     var i = startIdx + (dxm < -60 ? 1 : dxm > 60 ? -1 : 0);
     go(Math.max(0, Math.min(slides.length - 1, i)));
   });
@@ -190,7 +190,7 @@
     lb.hidden = false;
     document.body.style.overflow = "hidden";
     stop();
-    $("lbx").focus();
+    $("ampliada-fechar").focus();
   }
   function closeLb() {
     lb.hidden = true;
@@ -199,11 +199,11 @@
     if (opener) opener.focus();
     play();
   }
-  $("lbx").addEventListener("click", closeLb);
-  $("lbp").addEventListener("click", function () {
+  $("ampliada-fechar").addEventListener("click", closeLb);
+  $("ampliada-anterior").addEventListener("click", function () {
     show(cur - 1);
   });
-  $("lbn").addEventListener("click", function () {
+  $("ampliada-proximo").addEventListener("click", function () {
     show(cur + 1);
   });
   lb.addEventListener("click", function (e) {
