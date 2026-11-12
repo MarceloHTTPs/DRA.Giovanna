@@ -45,6 +45,8 @@ body {
   padding-top: var(--bar);
   padding-bottom: env(safe-area-inset-bottom, 0px);
   -webkit-font-smoothing: antialiased;
+
+ 
 }
 h1,
 h2,
@@ -888,4 +890,87 @@ footer .wrap {
   .final {
     padding: 34px 0;
   }
+}
+
+
+/* ================= RESPONSIVO (celular, tablet e computador) ================= */
+/* Obs.: este bloco precisa ficar no FINAL do arquivo para vencer as regras acima. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:clip}
+img,iframe{max-width:100%}
+.Balao-whatsapp:hover{transform:scale(1.1)}
+.hero .wrap>*,.about .wrap>*,.map>*,.grid>*{min-width:0}
+.dots button{position:relative}
+.dots button::after{content:"";position:absolute;inset:-10px}
+@media (min-width:1400px){.wrap{max-width:1200px}}
+
+/* tablet e celular: tudo em uma coluna */
+@media (max-width:900px){
+  .hero .wrap,.about .wrap,.map{grid-template-columns:1fr}
+  .hero .ph{justify-self:center;max-width:340px;width:100%}
+  .about-media{max-width:none}
+}
+/* tablet: cards em 2 colunas (o último ocupa a linha toda se sobrar) */
+@media (min-width:601px) and (max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .grid>:last-child:nth-child(odd){grid-column:1/-1}
+}
+/* celular */
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  header .wrap{height:58px;gap:10px}
+  .brand{font-size:1.05rem;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+  header .btn{padding:9px 16px;font-size:.82rem;flex:none}
+  section{padding:36px 0}
+  .hero{padding:22px 0 32px}
+  .hero h1{font-size:clamp(1.9rem,9vw,2.6rem)}
+  .rate{font-size:.78rem;flex-wrap:wrap}
+  .cta{flex-direction:column;align-items:stretch}
+  .cta .btn,.info .btn,.vip .btn{width:100%;justify-content:center}
+  .trust .wrap{gap:14px 10px}
+  .trust strong{font-size:1.15rem}
+  .rv .head{flex-direction:column;align-items:flex-start}
+  .vip{flex-direction:column;align-items:flex-start}
+  .frame,.frame iframe{min-height:280px}
+  .final{padding:30px 0}
+  footer .wrap{flex-direction:column}
+  .Balao-whatsapp{width:52px;height:52px;right:14px;font-size:1.4rem}
+  /* foto ampliada: setas embaixo para não cobrir a imagem */
+  .lb figure{max-width:94vw}
+  .lb .cnav,.lb .cnav:hover{top:auto;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:none;width:42px;height:42px}
+  .lb .prev{left:calc(50% - 56px)}
+  .lb .next{right:calc(50% - 56px)}
+  .lb img{max-height:68vh}
+}
+@media (max-width:380px){
+  .brand{font-size:.98rem}
+  header .btn{padding:8px 13px}
+  .trust span{font-size:.72rem}
+}
+
+
+/* ================= TAMANHO DAS FONTES (um pouco maiores) ================= */
+/* Para aumentar/diminuir TUDO de uma vez, mude só o 110% abaixo. */
+html{font-size:110%}
+.lead{font-size:1.02rem}
+.btn{font-size:.95rem}
+.rate{font-size:.88rem}
+.eyebrow{font-size:.8rem}
+.trust span{font-size:.84rem}
+.card p{font-size:.94rem}
+.who small{font-size:.84rem}
+.info div{font-size:.98rem}
+.info b{font-size:.76rem}
+.vip p{font-size:.9rem}
+.vip-hint{display:none;margin-top:4px;color:var(--muted);font-size:.78rem;line-height:1.4}
+@media (hover:hover) and (pointer:fine){.vip-hint{display:block}}
+footer{font-size:.88rem}
+@media (max-width:600px){
+  .brand{font-size:.95rem}
+  header .btn{font-size:.8rem;padding:8px 14px}
+  .rate{font-size:.82rem}
+}
+@media (max-width:380px){
+  .brand{font-size:.86rem}
+  header .btn{padding:7px 12px}
 }
