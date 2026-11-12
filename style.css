@@ -974,3 +974,12 @@ footer{font-size:.88rem}
   .brand{font-size:.86rem}
   header .btn{padding:7px 12px}
 }
+
+/* ===== Grupo VIP no celular (compacto) ===== */
+@media (max-width:600px){
+  .vip{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:8px 12px;padding:14px 16px}
+  .vip .txt{flex:none;min-width:0}
+  .vip h3{font-size:1.15rem}
+  .vip p{font-size:.88rem;line-height:1.45}
+  .vip .btn{grid-column:1/-1;width:100%;justify-content:center;padding:11px 18px}
+}
