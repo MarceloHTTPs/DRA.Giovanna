@@ -975,11 +975,26 @@ footer{font-size:.88rem}
   header .btn{padding:7px 12px}
 }
 
-/* ===== Grupo VIP no celular (compacto) ===== */
+/* ===== Convite Grupo VIP (branco + botão dourado + diamante) ===== */
+.grupo-vip{display:flex;align-items:center;justify-content:space-between;gap:18px;background:var(--card);color:var(--ink);border:1px solid var(--gold);border-radius:16px;padding:18px 22px;box-shadow:0 18px 34px -24px rgba(120,80,30,.55)}
+.gv-main{display:flex;align-items:center;gap:14px;min-width:0}
+.gv-gem{flex:none;font-size:2.1rem;line-height:1;filter:drop-shadow(0 4px 8px rgba(169,137,93,.5));animation:gvfloat 3s ease-in-out infinite}
+@keyframes gvfloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(-8deg)}}
+.gv-text{min-width:0}
+.gv-tag{font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.grupo-vip h3{font-size:1.4rem;color:var(--ink);margin:4px 0 2px}
+.grupo-vip p{font-size:.92rem;line-height:1.5;color:var(--muted)}
+.gv-hint{display:none;margin-top:6px;font-size:.75rem;line-height:1.4;color:var(--muted);opacity:.8}
+@media (hover:hover) and (pointer:fine){.gv-hint{display:block}}
+.gv-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--green);color:var(--on-green);font-weight:700;font-size:.92rem;padding:12px 22px;border-radius:999px;transition:transform .25s,box-shadow .25s}
+.gv-btn:hover{transform:translateY(-3px);box-shadow:0 12px 26px -12px var(--green)}
+.gv-btn span{transition:transform .25s}
+.gv-btn:hover span{transform:translateX(4px)}
 @media (max-width:600px){
-  .vip{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:8px 12px;padding:14px 16px}
-  .vip .txt{flex:none;min-width:0}
-  .vip h3{font-size:1.15rem}
-  .vip p{font-size:.88rem;line-height:1.45}
-  .vip .btn{grid-column:1/-1;width:100%;justify-content:center;padding:11px 18px}
+  .grupo-vip{flex-direction:column;align-items:stretch;gap:12px;padding:16px}
+  .gv-gem{font-size:1.9rem}
+  .grupo-vip h3{font-size:1.2rem}
+  .grupo-vip p{font-size:.88rem}
+  .gv-btn{width:100%;padding:12px 18px}
 }
+@media (prefers-reduced-motion:reduce){.gv-gem{animation:none}}
